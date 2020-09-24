@@ -1,0 +1,10 @@
+FROM alpine
+
+MAINTAINER brunobueno87@gmail.com
+
+ADD crondata /crondata
+RUN chmod 0644 /crondata
+
+RUN crontab /crondata
+
+ENTRYPOINT [ "/usr/sbin/crond", "-f" ]
